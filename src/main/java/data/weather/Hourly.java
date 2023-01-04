@@ -1,18 +1,18 @@
-package data;
+package data.weather;
 
 import java.util.Arrays;
 
-public class Hours {
+public class Hourly {
     private String[] time;
     private float[] temperature_2m;
     private int[] relativehumidity_2m;
     private double[] precipitation;
     private float[] windspeed_10m;
 
-    public Hours() {
+    public Hourly() {
     }
 
-    public Hours(String[] time, float[] temperature_2m, int[] relativehumidity_2m, double[] precipitation, float[] windspeed_10m) {
+    public Hourly(String[] time, float[] temperature_2m, int[] relativehumidity_2m, double[] precipitation, float[] windspeed_10m) {
         this.time = time;
         this.temperature_2m = temperature_2m;
         this.relativehumidity_2m = relativehumidity_2m;

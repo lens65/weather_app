@@ -1,47 +1,45 @@
 package data;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import data.weather.Weather;
 
 import java.io.*;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
 public class Data {
-    private static List<RegionName> regions;
-    private static List<Region> regionsInfo = new ArrayList<>();
-    private static long timeOfUpdate;
-
-    public static void getData(){
-        File file = new File("output.txt");
-        Scanner scanner = null;
-        regions = Arrays.asList(RegionName.values());
-        ObjectMapper objectMapper = new ObjectMapper();
-            try {
-                scanner = new Scanner(file);
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
-            while (scanner.hasNextLine()){
-                String str = scanner.nextLine();
-                for(RegionName region : regions){
-                    if(region.getName().equals(str)) {
-                        try {
-                            region.setWeather(objectMapper.readValue(scanner.nextLine(), Weather.class));
-                        } catch (JsonProcessingException e) {
-                            e.printStackTrace();
-                        }
-                        break;
-                    }
-                }
-            }
-
-    }
+//    private static List<RegionName> regions;
+//    private static List<Region> regionsInfo = new ArrayList<>();
+//    private static long timeOfUpdate;
+//
+//    public static void getData(){
+//        File file = new File("output.txt");
+//        Scanner scanner = null;
+//        regions = Arrays.asList(RegionName.values());
+//        ObjectMapper objectMapper = new ObjectMapper();
+//            try {
+//                scanner = new Scanner(file);
+//            } catch (FileNotFoundException e) {
+//                e.printStackTrace();
+//            }
+//            while (scanner.hasNextLine()){
+//                String str = scanner.nextLine();
+//                for(RegionName region : regions){
+//                    if(region.getName().equals(str)) {
+//                        try {
+//                            region.setWeather(objectMapper.readValue(scanner.nextLine(), Weather.class));
+//                        } catch (JsonProcessingException e) {
+//                            e.printStackTrace();
+//                        }
+//                        break;
+//                    }
+//                }
+//            }
+//
+//    }
 
 //    public static void getData(){
 //        long start = System.currentTimeMillis();

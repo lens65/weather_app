@@ -1,4 +1,4 @@
-package data;
+package data.weather;
 
 public class Units {
     private String time;

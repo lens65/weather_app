@@ -1,4 +1,4 @@
-package data;
+package data.weather;
 
 public class Weather {
     private double latitude;
@@ -9,12 +9,12 @@ public class Weather {
     private String timezone_abbreviation;
     private double elevation;
     private Units hourly_units;
-    private Hours hourly;
+    private Hourly hourly;
 
     public Weather() {
     }
 
-    public Weather(double latitude, double longitude, double generationtime_ms, int utc_offset_seconds, String timezone, String timezone_abbreviation, double elevation, Units hourly_units, Hours hourly) {
+    public Weather(double latitude, double longitude, double generationtime_ms, int utc_offset_seconds, String timezone, String timezone_abbreviation, double elevation, Units hourly_units, Hourly hourly) {
         this.latitude = latitude;
         this.longitude = longitude;
         this.generationtime_ms = generationtime_ms;
@@ -90,11 +90,11 @@ public class Weather {
         this.hourly_units = hourly_units;
     }
 
-    public Hours getHourly() {
+    public Hourly getHourly() {
         return hourly;
     }
 
-    public void setHourly(Hours hourly) {
+    public void setHourly(Hourly hourly) {
         this.hourly = hourly;
     }
 
