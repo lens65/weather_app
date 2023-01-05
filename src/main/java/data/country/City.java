@@ -19,35 +19,23 @@ public class City {
     private int x;
     @Column(name = "y")
     private int y;
-    @Column(name = "relevance")
-    private int relevance;
     @Column(name = "time")
     private String time;
     @Column(name = "weather")
     private String jsonWeather;
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "region_id")
-    private Region region;
+    @JoinColumn(name = "country_id")
+    private Country country;
 
     public City() {
     }
 
-    public City(String name, double latitude, double longitude, int x, int y, int relevance) {
+    public City(String name, double latitude, double longitude, int x, int y, String time, String jsonWeather) {
         this.name = name;
         this.latitude = latitude;
         this.longitude = longitude;
         this.x = x;
         this.y = y;
-        this.relevance = relevance;
-    }
-
-    public City(String name, double latitude, double longitude, int x, int y, int relevance, String time, String jsonWeather) {
-        this.name = name;
-        this.latitude = latitude;
-        this.longitude = longitude;
-        this.x = x;
-        this.y = y;
-        this.relevance = relevance;
         this.time = time;
         this.jsonWeather = jsonWeather;
     }
@@ -100,22 +88,6 @@ public class City {
         this.y = y;
     }
 
-    public int getRelevance() {
-        return relevance;
-    }
-
-    public void setRelevance(int relevance) {
-        this.relevance = relevance;
-    }
-
-    public Region getRegion() {
-        return region;
-    }
-
-    public void setRegion(Region region) {
-        this.region = region;
-    }
-
     public String getTime() {
         return time;
     }
@@ -130,5 +102,13 @@ public class City {
 
     public void setJsonWeather(String jsonWeather) {
         this.jsonWeather = jsonWeather;
+    }
+
+    public Country getCountry() {
+        return country;
+    }
+
+    public void setCountry(Country country) {
+        this.country = country;
     }
 }

@@ -6,11 +6,16 @@ import jakarta.persistence.EntityTransaction;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.TreeMap;
 
 public class DAO {
 
     private static JpaService jpaService = JpaService.getJpaService();
     private static EntityManager entityManager;
+
+//    public DAO(){
+//        jpaService = JpaService.getJpaService();
+//    }
 
     public static List<Country> getAllCountries(){
         List<Country> countries = new ArrayList<>();
@@ -21,7 +26,7 @@ public class DAO {
             countries = entityManager.createQuery("from Country").getResultList();
             transaction.commit();
         }finally {
-            jpaService.close();
+            entityManager.close();
         }
 
         return countries;
@@ -36,9 +41,39 @@ public class DAO {
             country = entityManager.find(Country.class, id);
             transaction.commit();
         } finally {
-            jpaService.close();
+            entityManager.close();
         }
         return country;
+    }
+
+    public static TreeMap<String, Integer> getAllCountriesNames(){
+        TreeMap<String, Integer> map = new TreeMap<>();
+        List<Object[]> list = new ArrayList<>();
+        try {
+            entityManager = jpaService.getEntityManagerFactory().createEntityManager();
+            EntityTransaction transaction = entityManager.getTransaction();
+            transaction.begin();
+            list = entityManager.createQuery("select name,id from Country").getResultList();
+            transaction.commit();
+        }finally {
+            entityManager.close();
+        }
+        for(Object[] object : list){
+            map.put((String)object[0], (Integer)object[1]);
+        }
+        return map;
+    }
+
+    public static void saveCountry(Country country){
+        try {
+            entityManager = jpaService.getEntityManagerFactory().createEntityManager();
+            EntityTransaction transaction = entityManager.getTransaction();
+            transaction.begin();
+            entityManager.persist(country);
+            transaction.commit();
+        }finally {
+            entityManager.close();
+        }
     }
 
 }

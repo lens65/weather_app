@@ -14,26 +14,23 @@ public class Country {
     private int id;
     @Column(name = "name")
     private String name;
-    @Column(name = "image")
-    private String image;
-    @Column(name = "color")
-    private int color;
+    @Column(name = "map")
+    private String map;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "country", fetch = FetchType.EAGER)
-    private List<Region> regions;
+    private List<City> cities;
 
     public Country() {
     }
 
-    public Country(String name, String image, int color) {
+    public Country(String name, String map) {
         this.name = name;
-        this.image = image;
-        this.color = color;
+        this.map = map;
     }
 
-    public void addRegionToCountry(Region region){
-        if(regions == null) regions = new ArrayList<>();
-        regions.add(region);
-        region.setCountry(this);
+    public void addCityToCountry(City city){
+        if(cities == null) cities = new ArrayList<>();
+        cities.add(city);
+        city.setCountry(this);
     }
 
     public int getId() {
@@ -52,24 +49,19 @@ public class Country {
         this.name = name;
     }
 
-    public int getColor() {
-        return color;
+    public String getMap() {
+        return map;
     }
 
-    public void setColor(int color) {
-        this.color = color;
+    public void setMap(String map) {
+        this.map = map;
     }
 
-    public String getImage() {
-        return image;
+    public List<City> getCities() {
+        return cities;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public void setCities(List<City> cities) {
+        this.cities = cities;
     }
-
-    public List<Region> getRegions() {
-        return regions;
-    }
-
 }
