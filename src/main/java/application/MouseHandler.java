@@ -9,6 +9,8 @@ public class MouseHandler implements MouseMotionListener, MouseListener {
     public int x;
     public int y;
 
+    public boolean mousePressed = false;
+
 
     @Override
     public void mouseDragged(MouseEvent e) {
@@ -28,12 +30,12 @@ public class MouseHandler implements MouseMotionListener, MouseListener {
 
     @Override
     public void mousePressed(MouseEvent e) {
-
+        mousePressed = true;
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
-
+        mousePressed = false;
     }
 
     @Override

@@ -1,5 +1,6 @@
 package data.dao;
 
+import data.country.City;
 import data.country.Country;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
@@ -70,6 +71,32 @@ public class DAO {
             EntityTransaction transaction = entityManager.getTransaction();
             transaction.begin();
             entityManager.persist(country);
+            transaction.commit();
+        }finally {
+            entityManager.close();
+        }
+    }
+
+    public static void addCity(int id, City city){
+        try {
+            entityManager = jpaService.getEntityManagerFactory().createEntityManager();
+            EntityTransaction transaction = entityManager.getTransaction();
+            transaction.begin();
+            entityManager.find(Country.class, id).addCityToCountry(city);
+            transaction.commit();
+        }finally {
+            entityManager.close();
+        }
+    }
+
+    public static void setWeather(City city){
+        try {
+            entityManager = jpaService.getEntityManagerFactory().createEntityManager();
+            EntityTransaction transaction = entityManager.getTransaction();
+            transaction.begin();
+            City newCity = entityManager.find(City.class, city.getId());
+            newCity.setTime(city.getTime());
+            newCity.setJsonWeather(city.getJsonWeather());
             transaction.commit();
         }finally {
             entityManager.close();

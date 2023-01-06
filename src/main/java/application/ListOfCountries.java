@@ -46,7 +46,7 @@ public class ListOfCountries {
             @Override
             public void valueChanged(ListSelectionEvent e) {
                 System.out.println(list.getSelectedValue());
-                new CountryInformationFrame(DAO.getCountry(countriesNamesWithId.get(list.getSelectedValue())));
+                new CountryMapFrame(DAO.getCountry(countriesNamesWithId.get(list.getSelectedValue())));
                 frame.dispose();
             }
         });

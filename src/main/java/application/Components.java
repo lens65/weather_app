@@ -7,6 +7,8 @@ import java.util.List;
 public class Components {
     public static JFrame getJFrame(int width, int height, String name){
         JFrame frame = new JFrame(name);
+//        frame.setUndecorated(true);
+//        frame.getRootPane().setBorder(BorderFactory.createMatteBorder(3, 3, 3, 3, Color.ORANGE));
         frame.pack();
         Insets insets = frame.getInsets();
         frame.setSize(insets.left + insets.right + width, insets.top + insets.bottom + height);
@@ -44,7 +46,7 @@ public class Components {
     public static JList<String> getJList(int x, int y, int width, int height, String[] str){
         JList<String> jList = new JList<>(str);
         jList.setLayout(null);
-        jList.setBackground(Color.DARK_GRAY);
+        jList.setBackground(new Color(32, 33, 36));
         jList.setBounds(x,y,width,height);
         return jList;
     }

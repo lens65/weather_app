@@ -30,6 +30,15 @@ public class City {
     public City() {
     }
 
+    public City(String name, double latitude, double longitude, int x, int y, Country country) {
+        this.name = name;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.x = x;
+        this.y = y;
+        this.country = country;
+    }
+
     public City(String name, double latitude, double longitude, int x, int y, String time, String jsonWeather) {
         this.name = name;
         this.latitude = latitude;
