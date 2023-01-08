@@ -5,12 +5,14 @@ import application_v2.MenuPanel;
 import data.dao.DAO;
 import data.dao.JpaService;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 
 public class Main {
     public static void main(String[] args) {
-//        JpaService.getJpaService();
-//        new FirstWindow();
-        MainFrame m = new MainFrame();
-//        new CountryMapPanel(m).setCountry(DAO.getCountry(4));
+        JpaService.getJpaService();
+        new MainFrame();
+
     }
 }
