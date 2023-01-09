@@ -1,18 +1,30 @@
 package application_v2;
 
+import data.country.City;
 import data.weather.Weather;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.awt.image.ImageObserver;
-import java.awt.image.ImageProducer;
 import java.io.File;
 import java.io.IOException;
-import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Date;
 
 public class Graph {
+    //получить одно общее изображение
+    public static BufferedImage[] getWeathersImages(City city, Weather weather, int width, int height){
+        BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+        Graphics g = image.getGraphics();
+        BufferedImage top = getTopImage(city, weather, width, height * 2/ 10);
+        BufferedImage days = getDaysImage(weather,width,height * 2 / 10);
+        BufferedImage graph = getGraphImage(weather.getHourly().getTemperature_2m(), width, height * 6 / 10);
+        g.drawImage(days,0,0, null);
+        g.drawImage(graph, 0, height * 2 / 8, null);
+        return new BufferedImage[]{top, days, graph};
+    }
+    //получить изображение графика с сеткой
     public static BufferedImage getGraphImage(float[] yAxis, int width, int height) {
         BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
         Graphics g = image.getGraphics();
@@ -34,8 +46,8 @@ public class Graph {
             else g.drawLine(font.getSize() * 2 + i * widthOfGraph / 14,font.getSize(),font.getSize() * 2 + i * widthOfGraph / 14,font.getSize() + heightOfGraph);
         }
         //кривая графика
+        g.setColor(new Color(3, 236, 252));
         for(int i = 0; i < yAxis.length - 1; i++){
-            g.setColor(Color.cyan);
             g.drawLine(
                     font.getSize() * 2 + i * widthOfGraph / yAxis.length,
                     font.getSize() + (int)(heightOfGraph * Math.abs(maxAndMin[1] - yAxis[i]) / Math.abs(maxAndMin[1] - maxAndMin[0])),
@@ -68,18 +80,9 @@ public class Graph {
             maxAndMin[0] = minInt;
             maxAndMin[1] = maxInt;
         }
-
         return maxAndMin;
     }
-    public static BufferedImage getWeatherImage(Weather weather, int width, int height){
-        BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
-        Graphics g = image.getGraphics();
-        BufferedImage days = getDaysImage(weather,width,height * 2 / 8);
-        BufferedImage graph = getGraphImage(weather.getHourly().getTemperature_2m(), width, height * 6 / 8);
-        g.drawImage(days,0,0, null);
-        g.drawImage(graph, 0, height * 2 / 8, null);
-        return image;
-    }
+    //получить часть изображение со днями
     public static BufferedImage getDaysImage(Weather weather, int width, int height){
         BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
         Graphics g = image.getGraphics();
@@ -140,5 +143,17 @@ public class Graph {
             e.printStackTrace();
         }
         return icon.getScaledInstance(size,size,Image.SCALE_DEFAULT);
+    }
+    public static BufferedImage getTopImage(City city, Weather weather, int width, int height){
+        BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+        Graphics g = image.getGraphics();
+        Font font = new Font("Serif", Font.BOLD, (int)(width * 0.02));
+        g.setColor(Color.white);
+        g.setFont(font);
+        g.drawString(city.getName() + ",", 0,font.getSize());
+        g.drawString(city.getCountry().getName(), 0, font.getSize() * 2);
+        String hour = new SimpleDateFormat("HH").format(new Date());
+        g.drawString( hour + ":00    " + weather.getHourly().getTemperature_2m()[Integer.parseInt(hour)], 0, font.getSize() * 3);
+        return image;
     }
 }

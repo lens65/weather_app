@@ -14,8 +14,6 @@ public class AddCityPanel extends ContentPanel {
     private JTextField longitudeField;
     private JButton addButton;
     private JButton cancelButton;
-    private String latitude;
-    private String longitude;
     private final Country country;
     private final int x;
     private final int y;
@@ -80,7 +78,6 @@ public class AddCityPanel extends ContentPanel {
             frame.setContentPanel(new CountryMapPanel(frame, country));
         });
     }
-
 
     @Override
     void actionOnResizing(int width, int height) {

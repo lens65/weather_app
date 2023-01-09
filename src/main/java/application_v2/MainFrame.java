@@ -20,7 +20,7 @@ public class MainFrame extends JFrame{
         this.setName("Погода");
         this.setLayout(null);
         this.setMinimumSize(new Dimension(800,600));
-        this.setPreferredSize(new Dimension(800,600));
+        this.setPreferredSize(new Dimension(1440,900));
         this.setMaximumSize(new Dimension(1920,1080));
         this.setResizable(true);
         this.setLocationRelativeTo(null);
