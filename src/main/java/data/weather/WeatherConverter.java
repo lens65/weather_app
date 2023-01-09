@@ -24,7 +24,7 @@ public class WeatherConverter {
     public static void requestNewWeatherInfo(City city){
         ObjectMapper objectMapper = new ObjectMapper();
         try {
-            URL url = new URL("https://api.open-meteo.com/v1/forecast?latitude=" + city.getLatitude() + "&longitude=" + city.getLongitude() + "&hourly=temperature_2m,relativehumidity_2m,precipitation,windspeed_10m&timezone=Africa%2FCairo");
+            URL url = new URL("https://api.open-meteo.com/v1/forecast?latitude=" + city.getLatitude() + "&longitude=" + city.getLongitude() + "&hourly=temperature_2m,weathercode");
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("GET");
             connection.setConnectTimeout(5000);

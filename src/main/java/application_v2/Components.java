@@ -22,7 +22,8 @@ public class Components {
     public static JList<String> getJList(Dimension dimension, String[] str){
         JList<String> jList = new JList<>(str);
         jList.setLayout(null);
-        jList.setFont(new Font("Serif", Font.BOLD, 17));
+        jList.setFont(new Font("Serif", Font.BOLD, 25));
+        jList.setSelectionBackground(Color.white);
         jList.setBackground(new Color(32, 33, 36));
         jList.setSize(dimension);
         return jList;

@@ -69,7 +69,6 @@ public class CountryMapPanel extends ContentPanel implements Runnable{
     private void setMap(){
         try {
             map = ImageIO.read(new URL(country.getMap()));
-            System.out.println("Карта загрузилась");
         } catch (IOException e) {
             e.printStackTrace();
         }

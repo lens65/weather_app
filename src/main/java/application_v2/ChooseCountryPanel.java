@@ -33,7 +33,6 @@ public class ChooseCountryPanel extends ContentPanel{
     private void setList(){
         list = Components.getJList(panelSize,countriesNamesWithId.keySet().toArray(new String[countriesNamesWithId.size()]));
         list.addListSelectionListener(e -> {
-            System.out.println(list.getSelectedValue());
             this.removeAll();
             this.setEnabled(false);
             frame.setContentPanel(new CountryMapPanel(frame, DAO.getCountry(countriesNamesWithId.get(list.getSelectedValue()))));
@@ -41,8 +40,6 @@ public class ChooseCountryPanel extends ContentPanel{
         list.setLocation(0,0);
         this.add(list);
     }
-
-
     @Override
     void actionOnResizing(int width, int height) {
         this.setLocation((width - panelSize.width) / 2, (height - panelSize.width) / 2);

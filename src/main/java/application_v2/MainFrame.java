@@ -7,9 +7,7 @@ import java.awt.event.*;
 public class MainFrame extends JFrame{
     private JPanel framePanel;
     private ContentPanel contentPanel;
-
     private final Color panelBackground = new Color(32, 33, 36);
-//    private final Color panelBackground = Color.ORANGE;
 
     public MainFrame(){
         setFrame();

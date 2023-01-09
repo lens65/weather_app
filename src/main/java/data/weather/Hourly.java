@@ -5,19 +5,16 @@ import java.util.Arrays;
 public class Hourly {
     private String[] time;
     private float[] temperature_2m;
-    private int[] relativehumidity_2m;
-    private double[] precipitation;
-    private float[] windspeed_10m;
+    private int[] weathercode;
+
 
     public Hourly() {
     }
 
-    public Hourly(String[] time, float[] temperature_2m, int[] relativehumidity_2m, double[] precipitation, float[] windspeed_10m) {
+    public Hourly(String[] time, float[] temperature_2m, int[] weathercode) {
         this.time = time;
         this.temperature_2m = temperature_2m;
-        this.relativehumidity_2m = relativehumidity_2m;
-        this.precipitation = precipitation;
-        this.windspeed_10m = windspeed_10m;
+        this.weathercode = weathercode;
     }
 
     public String[] getTime() {
@@ -36,38 +33,20 @@ public class Hourly {
         this.temperature_2m = temperature_2m;
     }
 
-    public int[] getRelativehumidity_2m() {
-        return relativehumidity_2m;
+    public int[] getWeathercode() {
+        return weathercode;
     }
 
-    public void setRelativehumidity_2m(int[] relativehumidity_2m) {
-        this.relativehumidity_2m = relativehumidity_2m;
-    }
-
-    public double[] getPrecipitation() {
-        return precipitation;
-    }
-
-    public void setPrecipitation(double[] precipitation) {
-        this.precipitation = precipitation;
-    }
-
-    public float[] getWindspeed_10m() {
-        return windspeed_10m;
-    }
-
-    public void setWindspeed_10m(float[] windspeed_10m) {
-        this.windspeed_10m = windspeed_10m;
+    public void setWeathercode(int[] weathercode) {
+        this.weathercode = weathercode;
     }
 
     @Override
     public String toString() {
-        return "Hours{" +
+        return "Hourly{" +
                 "time=" + Arrays.toString(time) +
                 ", temperature_2m=" + Arrays.toString(temperature_2m) +
-                ", relativehumidity_2m=" + Arrays.toString(relativehumidity_2m) +
-                ", precipitation=" + Arrays.toString(precipitation) +
-                ", windspeed_10m=" + Arrays.toString(windspeed_10m) +
+                ", weathercode=" + Arrays.toString(weathercode) +
                 '}';
     }
 }

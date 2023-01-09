@@ -10,13 +10,11 @@ public class MenuPanel extends ContentPanel {
     private final Dimension buttonSize = new Dimension(200,30);
     private final Dimension panelSize = new Dimension(200,90);
     private final Color panelBackground = new Color(32, 33, 36);
-//    private final Color panelBackground = Color.GREEN;
 
     public MenuPanel(MainFrame frame){
         super(frame);
         this.frame = frame;
         setThisPanel();
-        System.out.println("MenuPanel created");
     }
     private void setThisPanel(){
         this.setLayout(null);

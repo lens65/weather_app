@@ -3,19 +3,16 @@ package data.weather;
 public class Units {
     private String time;
     private String temperature_2m;
-    private String relativehumidity_2m;
-    private String precipitation;
-    private String windspeed_10m;
+    private String weathercode;
+
 
     public Units() {
     }
 
-    public Units(String time, String temperature_2m, String relativehumidity_2m, String precipitation, String windspeed_10m) {
+    public Units(String time, String temperature_2m, String weathercode) {
         this.time = time;
         this.temperature_2m = temperature_2m;
-        this.relativehumidity_2m = relativehumidity_2m;
-        this.precipitation = precipitation;
-        this.windspeed_10m = windspeed_10m;
+        this.weathercode = weathercode;
     }
 
     public String getTime() {
@@ -34,28 +31,12 @@ public class Units {
         this.temperature_2m = temperature_2m;
     }
 
-    public String getRelativehumidity_2m() {
-        return relativehumidity_2m;
+    public String getWeathercode() {
+        return weathercode;
     }
 
-    public void setRelativehumidity_2m(String relativehumidity_2m) {
-        this.relativehumidity_2m = relativehumidity_2m;
-    }
-
-    public String getPrecipitation() {
-        return precipitation;
-    }
-
-    public void setPrecipitation(String precipitation) {
-        this.precipitation = precipitation;
-    }
-
-    public String getWindspeed_10m() {
-        return windspeed_10m;
-    }
-
-    public void setWindspeed_10m(String windspeed_10m) {
-        this.windspeed_10m = windspeed_10m;
+    public void setWeathercode(String weathercode) {
+        this.weathercode = weathercode;
     }
 
     @Override
@@ -63,9 +44,7 @@ public class Units {
         return "Units{" +
                 "time='" + time + '\'' +
                 ", temperature_2m='" + temperature_2m + '\'' +
-                ", relativehumidity_2m='" + relativehumidity_2m + '\'' +
-                ", precipitation='" + precipitation + '\'' +
-                ", windspeed_10m='" + windspeed_10m + '\'' +
+                ", weathercode='" + weathercode + '\'' +
                 '}';
     }
 }
